@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Ravi Prakash Chaurasiya, Computer Science student, performance marketer and growth enthusiast.">
+  <meta name="theme-color" content="#0a1530">
+  <title>Ravi Prakash Chaurasiya | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- 1. Colours (change them here, the whole site updates) ---------- */
+    :root {
+      --navy: #0a1530;
+      --navy-light: #101f45;
+      --line: #22345f;
+      --sky: #7cc4ff;
+      --text: #f9fbfd;
+      --muted: #9fb2d3;
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "Manrope", system-ui, sans-serif;
+    }
+
+    /* ---------- 2. Reset ---------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* ---------- 3. Navigation ---------- */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--navy);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--sky);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--sky);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font: inherit;
+    }
+
+    /* ---------- 4. Hero ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 70px;
+      align-items: center;
+      padding: 90px 0;
+    }
+
+    .hero-role {
+      color: var(--sky);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: sans-serif
+      font-weight: 400;
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      max-width: 540px;
+      margin: 24px 0 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border: 1px solid var(--sky);
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+
+    .btn-fill {
+      background: var(--sky);
+      color: var(--navy);
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    /* Photo with an offset outline behind it, gives the hand-made feel */
+    .photo {
+      position: relative;
+      width: min(300px, 100%);
+      aspect-ratio: 4 / 5;
+      justify-self: center;
+    }
+
+    .photo::before {
+      content: "";
+      position: absolute;
+      inset: 14px -14px -14px 14px;
+      border: 1px solid var(--sky);
+      border-radius: 14px;
+    }
+
+    .photo img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      background: var(--navy-light);
+    }
+
+    /* ---------- 5. Quick facts (3 columns) ---------- */
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fact {
+      padding: 26px 24px;
+      border-right: 1px solid var(--line);
+    }
+
+    .fact:last-child {
+      border-right: none;
+    }
+
+    .fact strong {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* ---------- 6. Sections: title on the left, content on the right ---------- */
+    section {
+      padding: 80px 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 50px;
+    }
+
+    .split h2 {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2.3rem;
+      line-height: 1.1;
+    }
+
+    .intro {
+      color: var(--muted);
+      margin-bottom: 30px;
+      max-width: 620px;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .box {
+      background: var(--navy-light);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .box h3 {
+      font-size: 1.05rem;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .box p,
+    .box li {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .box p + p {
+      margin-top: 10px;
+    }
+
+    .when {
+      color: var(--sky);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .box ul {
+      list-style: none;
+    }
+
+    .box li {
+      padding-left: 18px;
+      position: relative;
+      margin: 6px 0;
+    }
+
+    .box li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--sky);
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--sky);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- 7. Skills ---------- */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skills span {
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.88rem;
+    }
+
+    /* ---------- 8. Achievements (3 columns) ---------- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .shot {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .shot img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      background: var(--navy);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .shot div {
+      padding: 16px;
+    }
+
+    .shot h3 {
+      font-size: 0.95rem;
+    }
+
+    .shot p {
+      font-size: 0.85rem;
+    }
+
+    /* ---------- 9. Certificates (2 columns) ---------- */
+    .certs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .cert {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 0.93rem;
+    }
+
+    .cert a {
+      color: var(--sky);
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    /* ---------- 10. Contact + footer ---------- */
+    .contact {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 40px;
+      border: 1px solid var(--sky);
+      border-radius: 18px;
+    }
+
+    .contact h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.1;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .social {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .social a {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--sky);
+      outline-offset: 3px;
+    }
+
+    /* ---------- 11. Tablet and mobile ---------- */
+    @media (max-width: 860px) {
+      .hero,
+      .split,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 40px;
+        padding: 60px 0;
+      }
+
+      .split {
+        gap: 24px;
+      }
+
+      .split h2 {
+        position: static;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 14px;
+        padding: 20px;
+        background: var(--navy);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .facts,
+      .cols,
+      .certs,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .fact {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contact {
+        padding: 26px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <div class="nav-bar">
+    <nav class="nav wrap" aria-label="Main">
+      <a class="logo" href="#home">Ravi<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false">Menu</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- Hero -->
+    <header class="hero wrap" id="home">
+      <div>
+        <p class="hero-role">Student, marketer and builder</p>
+        <h1>Ravi Prakash Chaurasiya</h1>
+        <p class="hero-text">I'm a Computer Science student and digital marketing enthusiast interested in performance marketing, lead generation and business growth. I enjoy combining creative ideas, data and technology to build useful digital experiences.</p>
+        <div class="buttons">
+          <a class="btn btn-fill" href="#projects">Explore my work</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- Keep your photo in the same folder with this exact file name -->
+      <div class="photo">
+        <img src="file_0000000014288211b02eef8663376268.png" alt="Portrait of Ravi Prakash Chaurasiya">
+      </div>
+    </header>
+
+    <div class="wrap facts">
+      <div class="fact"><strong>Computer Science</strong><span>B.Tech student, KIPM</span></div>
+      <div class="fact"><strong>Digital Marketing</strong><span>Campaigns, leads and growth</span></div>
+      <div class="fact"><strong>Hands-on Learning</strong><span>Projects, competitions and practice</span></div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+      <div class="wrap split">
+        <h2>Curiosity into practical work.</h2>
+        <div>
+          <p class="intro">My interests sit between technology, marketing and entrepreneurship. I'm building my technical foundation while applying what I learn to campaigns, digital projects and collaborative startup work.</p>
+          <div class="cols">
+            <article class="box">
+              <h3>What I'm exploring</h3>
+              <ul>
+                <li>Performance marketing and Meta Ads</li>
+                <li>Lead generation and customer acquisition</li>
+                <li>Computer science basics and C programming</li>
+                <li>Digital products, startups and business strategy</li>
+              </ul>
+            </article>
+            <article class="box">
+              <h3>How I work</h3>
+              <p>I value experimentation, clear communication, research and continuous learning. I aim to understand the problem first, test practical ideas, and improve based on feedback and data.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="wrap split">
+        <h2>My learning journey.</h2>
+        <div>
+          <p class="intro">Building a foundation in computing while continuing to learn about marketing, business and emerging technology.</p>
+          <div class="cols">
+            <article class="box">
+              <div class="when">2026 to 2030, in progress</div>
+              <h3>B.Tech, Computer Science &amp; Engineering</h3>
+              <p>KIPM College of Engineering &amp; Technology, Gorakhpur, Uttar Pradesh</p>
+              <p>Interests: programming, artificial intelligence, technology and digital business.</p>
+            </article>
+            <article class="box">
+              <div class="when">2024 to 2025</div>
+              <h3>Class 12</h3>
+              <p>Janta Inter College, Ramkola, Kushinagar, Uttar Pradesh</p>
+              <p>Score: 70%</p>
+            </article>
+            <article class="box">
+              <div class="when">2022 to 2023</div>
+              <h3>Class 10</h3>
+              <p>MDS Public School, Basdila, Kushinagar, Uttar Pradesh</p>
+              <p>Score: 91%</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="wrap split">
+        <h2>Learning through execution.</h2>
+        <div>
+          <p class="intro">Experience across digital promotion, audience research, lead generation, sales communication and startup marketing.</p>
+          <div class="cols">
+            <article class="box">
+              <div class="when">Digital marketing</div>
+              <h3>Performance Marketing &amp; Meta Ads</h3>
+              <ul>
+                <li>Set up Facebook and Instagram ad campaigns</li>
+                <li>Support audience research and optimization</li>
+                <li>Explore creative testing and tracking</li>
+                <li>Focus on relevant enquiries and customers</li>
+              </ul>
+            </article>
+            <article class="box">
+              <div class="when">Marketing and growth</div>
+              <h3>SwaDrive, Marketing Lead</h3>
+              <ul>
+                <li>Contributed to marketing strategy and research</li>
+                <li>Reviewed competitors and found improvements</li>
+                <li>Supported brand presence and social media</li>
+                <li>Helped shape content and promotion ideas</li>
+              </ul>
+            </article>
+            <article class="box">
+              <div class="when">Sales and communication</div>
+              <h3>Affiliate Marketing</h3>
+              <p>Worked with Richind to promote online courses. It helped me practise audience analysis, customer engagement, objection handling and persuasive communication.</p>
+              <p><strong>Reported milestone:</strong> approximately ₹50,000 in affiliate income. Results can vary; this reflects my own past experience.</p>
+            </article>
+            <article class="box">
+              <div class="when">Business growth</div>
+              <h3>Lead Generation &amp; Customer Engagement</h3>
+              <ul>
+                <li>Plan campaign ideas that reach relevant audiences</li>
+                <li>Talk with prospects and understand their needs</li>
+                <li>Learn to judge lead quality and improve follow-up</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="wrap split">
+        <h2>Ideas made tangible.</h2>
+        <div>
+          <p class="intro">Selected digital work that brings together personal branding, marketing and practical web development.</p>
+          <div class="cols">
+            <article class="box">
+              <div class="when">Personal brand, website</div>
+              <h3>Scale With Ravi</h3>
+              <p>A personal portfolio and service website that presents my skills, services, feedback and work in one place, giving prospective clients and collaborators a clear digital identity.</p>
+              <a class="link" href="https://scalewithravi.netlify.app/" target="_blank" rel="noopener noreferrer">Visit live website</a>
+            </article>
+            <article class="box">
+              <div class="when">Web development, in progress</div>
+              <h3>Portfolio Development</h3>
+              <p>This portfolio shows my learning in HTML and CSS, responsive design, content organization and publishing a website online.</p>
+              <a class="link" href="https://github.com/raviprakashchaurasiya55" target="_blank" rel="noopener noreferrer">Explore GitHub</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="wrap split">
+        <h2>Tools, skills and interests.</h2>
+        <div>
+          <p class="intro">A growing mix of marketing, business, communication and technical skills, developed through study and hands-on practice.</p>
+          <div class="skills">
+            <span>Performance Marketing</span>
+            <span>Meta Ads</span>
+            <span>Lead Generation</span>
+            <span>Social Media Marketing</span>
+            <span>Affiliate Marketing</span>
+            <span>Sales &amp; Communication</span>
+            <span>Audience Research</span>
+            <span>Business Analytics</span>
+            <span>C Programming</span>
+            <span>HTML &amp; CSS</span>
+            <span>Entrepreneurship</span>
+            <span>Leadership</span>
+            <span>Content Ideas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+      <div class="wrap">
+        <div class="split" style="margin-bottom:30px">
+          <h2>Milestones worth sharing.</h2>
+          <p class="intro">A few competition and learning milestones from my academic and professional journey.</p>
+        </div>
+        <div class="gallery">
+          <article class="box shot">
+            <img src="3rd position.jpg" alt="Design Thinking competition recognition" loading="lazy">
+            <div>
+              <h3>3rd Position, Design Thinking</h3>
+              <p>Uddan Computer Education Center, Ramkola.</p>
+            </div>
+          </article>
+          <article class="box shot">
+            <img src="winner.jpg" alt="Quiz competition recognition" loading="lazy">
+            <div>
+              <h3>1st Position, GK &amp; Reasoning</h3>
+              <p>Recognition during my school journey.</p>
+            </div>
+          </article>
+          <article class="box shot">
+            <img src="InShot_20261005_173428095.jpg" alt="Robotics quiz recognition" loading="lazy">
+            <div>
+              <h3>1st Position, Robotics Car Race &amp; Quiz</h3>
+              <p>College competition conducted by Vigyantrix.</p>
+            </div>
+          </article>
+          <article class="box shot">
+            <img src="Richind 2.jpg" alt="Affiliate marketing milestone" loading="lazy">
+            <div>
+              <h3>Affiliate Marketing Milestone</h3>
+              <p>Progress achieved through learning and campaign execution.</p>
+            </div>
+          </article>
+          <article class="box shot">
+            <img src="Richind 1.jpg" alt="Affiliate marketing performance screenshot" loading="lazy">
+            <div>
+              <h3>Campaign Evidence</h3>
+              <p>Awarded by RichINd founder Yash Kulshetra.</p>
+            </div>
+          </article>
+          <article class="box shot">
+            <img src="InShot_20261007_171308445.jpg" alt="Portfolio development recognition" loading="lazy">
+            <div>
+              <h3>Portfolio Development</h3>
+              <p>Recognition for portfolio creation and deployment, awarded by Honourable Nitesh sir and Puneet sir.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section id="certificates">
+      <div class="wrap split">
+        <h2>Learning backed by proof.</h2>
+        <div>
+          <p class="intro">Open the certificate files to review the details.</p>
+          <div class="certs">
+            <div class="cert"><span>Diploma in Computer Application (DCA)</span><a href="https://drive.google.com/file/d/1pFFE_Ds8LIL2Zmi0jt_NMtWbn5syA9vd/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">View</a></div>
+            <div class="cert"><span>CodeFusion Hackathon</span><a href="https://drive.google.com/file/d/1YYgT847g2x84hmhD8N-92z_UefLNEOMq/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">View</a></div>
+            <div class="cert"><span>Robotics Race</span><a href="https://drive.google.com/file/d/1kvm0mCzSq1_BCC2FjuDhr9x4o-86A39E/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">View</a></div>
+            <div class="cert"><span>Portfolio Development</span><a href="https://drive.google.com/file/d/1MSVCxfuj6Res-g9_mlUz-XUpq8vXWTQc/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">View</a></div>
+            <div class="cert"><span>Affiliate Marketing</span><a href="https://drive.google.com/file/d/1ZbTZO0s4l8ENzhWt9lzbtLGdEF6aDrXW/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">View</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <h2>Let's connect and build.</h2>
+            <p>For collaborations, marketing projects, or conversations about technology and business, feel free to reach out.</p>
+          </div>
+          <div>
+            <div class="buttons">
+              <a class="btn btn-fill" href="mailto:raviprakashchaurasiya55@gmail.com">Email me</a>
+              <a class="btn" href="https://www.linkedin.com/in/ravi-prakash-chaurasiya-2a5441424" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div class="social">
+              <a href="https://github.com/raviprakashchaurasiya55" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.facebook.com/share/1PS9a97SLX/" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://www.instagram.com/growwithravi007" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© <span id="year">2026</span> Ravi Prakash Chaurasiya. All rights reserved.</span>
+      <span>Hand-coded with HTML &amp; CSS</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu: open and close
+    var btn = document.getElementById("menuBtn");
+    var links = document.getElementById("navLinks");
+
+    btn.addEventListener("click", function () {
+      var open = links.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open);
+      btn.textContent = open ? "Close" : "Menu";
+    });
+
+    // Close the menu after tapping a link
+    links.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        links.classList.remove("open");
+        btn.textContent = "Menu";
+      });
+    });
+
+    // Footer year updates by itself
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
